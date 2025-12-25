@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backendcore.mapper.EnergyMapper">
+
+    <insert id="insert">
+        INSERT INTO energy_data (device_id, voltage, current, power, kwh, create_time)
+        VALUES (#{deviceId}, #{voltage}, #{current}, #{power}, #{kwh}, NOW())
+    </insert>
+
+    <select id="selectChartData" resultType="com.example.backendcore.entity.EnergyData">
+        SELECT * FROM energy_data
+        WHERE device_id = #{deviceId}
+        ORDER BY create_time DESC
+            LIMIT 20
+    </select>
+
+    <!-- 统计能耗排名 (Top 5) -->
+    <select id="selectEnergyRanking" resultType="java.util.Map">
+        SELECT
+            d.name AS name,
+            ROUND(AVG(e.power), 1) AS value
+        FROM energy_data e
+            LEFT JOIN device d ON e.device_id = d.id
+        GROUP BY e.device_id, d.name
+        ORDER BY value DESC
+            LIMIT 5
+    </select>
+
+    <!-- === 大屏 KPI 统计 === -->
+
+    <!-- 1. 实时总功率：所有设备最新一条记录的 power 之和 -->
+    <select id="selectTotalRealtimePower" resultType="java.math.BigDecimal">
+        SELECT IFNULL(SUM(power), 0)
+        FROM energy_data
+        WHERE (device_id, create_time) IN (
+            SELECT device_id, MAX(create_time)
+            FROM energy_data
+            GROUP BY device_id
+        )
+    </select>
+
+    <!-- 2. 今日总能耗：简单的积分估算 (假设每5秒一条数据) -->
+    <select id="selectTodayTotalEnergy" resultType="java.math.BigDecimal">
+        SELECT IFNULL(SUM(power) * 5 / 3600 / 1000, 0)
+        FROM energy_data
+        WHERE DATE(create_time) = CURDATE()
+    </select>
+
+</mapper>

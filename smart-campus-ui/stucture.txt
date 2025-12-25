@@ -1,0 +1,13 @@
+Smart_Campus_2025/             <-- [总项目目录]
+│
+├── backend-core/              <-- [后端] (用 IDEA 打开)
+│   ├── src/
+│   ├── pom.xml
+│   └── ...
+│
+└── smart-campus-ui/           <-- [前端] (用 WebStorm 打开)
+    ├── node_modules/          <-- [自动生成的依赖包，相当于虚拟环境]
+    ├── src/
+    ├── package.json
+    ├── vite.config.js
+    └── ...

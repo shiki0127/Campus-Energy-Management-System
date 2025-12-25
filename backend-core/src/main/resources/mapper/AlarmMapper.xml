@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backendcore.mapper.AlarmMapper">
+
+    <!-- 关联查询：同时查出告警信息和对应的设备名称、房间号 -->
+    <!-- 返回 Map，key 会自动转为驼峰 (如 create_time -> createTime) -->
+    <select id="selectListWithDeviceInfo" resultType="java.util.Map">
+        SELECT
+            a.id,
+            a.type,
+            a.value,
+            a.detail,
+            a.create_time AS createTime,
+            d.name AS deviceName,
+            d.room_no AS roomNo
+        FROM alarm a
+                 LEFT JOIN device d ON a.device_id = d.id
+        ORDER BY a.create_time DESC
+            LIMIT 200
+    </select>
+
+</mapper>

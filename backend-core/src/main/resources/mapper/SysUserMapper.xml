@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.backendcore.mapper.SysUserMapper">
+
+    <!-- 结果映射 -->
+    <resultMap id="BaseResultMap" type="com.example.backendcore.entity.SysUser">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="role" property="role" />
+        <result column="nickname" property="nickname" />
+        <result column="phone" property="phone" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+
+    <!-- 新增用户 -->
+    <insert id="insert" parameterType="com.example.backendcore.entity.SysUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_user (`username`, `password`, `role`, `nickname`, `phone`, `create_time`)
+        VALUES (#{username}, #{password}, #{role}, #{nickname}, #{phone}, NOW())
+    </insert>
+
+    <!-- 根据用户名查询 -->
+    <select id="selectByUsername" resultMap="BaseResultMap">
+        SELECT `id`, `username`, `password`, `role`, `nickname`, `phone`, `create_time`
+        FROM sys_user
+        WHERE `username` = #{username}
+    </select>
+
+    <!-- 根据ID查询 -->
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT `id`, `username`, `password`, `role`, `nickname`, `phone`, `create_time`
+        FROM sys_user
+        WHERE `id` = #{id}
+    </select>
+
+    <!-- 查询所有 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT `id`, `username`, `password`, `role`, `nickname`, `phone`, `create_time`
+        FROM sys_user
+        ORDER BY `create_time` DESC
+    </select>
+
+</mapper>

@@ -1,0 +1,66 @@
+src
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── example
+│   │           └── backendcore
+│   │               ├── BackendCoreApplication.java  <-- [启动类，需加 @EnableScheduling @EnableAsync]
+│   │               │
+│   │               ├── common                       <-- [通用模块]
+│   │               │   └── Result.java              (统一返回结果)
+│   │               │
+│   │               ├── config                       <-- [配置模块]
+│   │               │   ├── CorsConfig.java          (跨域配置)
+│   │               │   └── SwaggerConfig.java       (接口文档配置)
+│   │               │
+│   │               ├── controller                   <-- [Web 接口层]
+│   │               │   ├── EnergyController.java    (能耗数据接口)
+│   │               │   └── SysUserController.java   (登录注册接口)
+│   │               │
+│   │               ├── entity                       <-- [数据库实体]
+│   │               │   ├── Alarm.java               (新: 告警)
+│   │               │   ├── Building.java            (新: 建筑)
+│   │               │   ├── Device.java              (更新: 设备，含 createTime)
+│   │               │   ├── EnergyData.java          (更新: 含电压电流功率)
+│   │               │   └── SysUser.java             (用户)
+│   │               │
+│   │               ├── event                        <-- [观察者模式 - 事件]
+│   │               │   └── EnergyDataEvent.java     (定义数据采集事件)
+│   │               │
+│   │               ├── listener                     <-- [观察者模式 - 监听器]
+│   │               │   └── AlarmEventListener.java  (监听事件并判断告警)
+│   │               │
+│   │               ├── mapper                       <-- [持久层接口]
+│   │               │   ├── AlarmMapper.java         (使用 @Insert 注解)
+│   │               │   ├── DeviceMapper.java        (使用 @Select 注解)
+│   │               │   ├── EnergyMapper.java        (配合 XML 使用)
+│   │               │   └── SysUserMapper.java       (配合 XML 使用)
+│   │               │
+│   │               ├── service                      <-- [业务逻辑层]
+│   │               │   ├── EnergyService.java       (接口)
+│   │               │   ├── SysUserService.java      (接口)
+│   │               │   ├── SimulatorService.java    (核心: 定时任务模拟器)
+│   │               │   │
+│   │               │   └── impl                     <-- [业务实现]
+│   │               │       ├── EnergyServiceImpl.java
+│   │               │       └── SysUserServiceImpl.java
+│   │               │
+│   │               ├── strategy                     <-- [策略模式 - 接口]
+│   │               │   ├── SimulationStrategy.java
+│   │               │   │
+│   │               │   └── impl                     <-- [策略模式 - 实现]
+│   │               │       ├── NormalStrategy.java
+│   │               │       └── OverloadStrategy.java
+│   │               │
+│   │               └── utils                        <-- [工具类]
+│   │                   └── JwtUtils.java
+│   │
+│   └── resources
+│       ├── application.yml                          (核心配置文件)
+│       ├── db
+│       │   └── smart_campus.sql                     (数据库脚本)
+│       └── mapper                                   <-- [MyBatis XML 文件]
+│           ├── EnergyMapper.xml                     (对应 EnergyMapper)
+│           └── SysUserMapper.xml                    (对应 SysUserMapper)
+│
+└── pom.xml                                          (Maven 依赖管理)
