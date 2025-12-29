@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling // 开启定时任务
-@EnableAsync      // 开启异步支持 (给告警监听器用)
+@EnableAsync      // 开启异步支持
 @MapperScan("com.example.backendcore.mapper")
 public class BackendCoreApplication {
     public static void main(String[] args) {

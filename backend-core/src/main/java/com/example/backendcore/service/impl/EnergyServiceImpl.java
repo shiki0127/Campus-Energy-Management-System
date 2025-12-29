@@ -1,3 +1,4 @@
+//负责把数据库里的原始 Entity 列表，转换成前端 ECharts 需要的 categories (X轴) 和 series (Y轴) 格式。
 package com.example.backendcore.service.impl;
 
 import com.example.backendcore.entity.EnergyData;
@@ -21,7 +22,7 @@ public class EnergyServiceImpl implements EnergyService {
         // 1. 调用 Mapper 查询数据库最近的20条数据
         List<EnergyData> dataList = energyMapper.selectChartData(deviceId);
 
-        // 数据库查出来通常是倒序（最新的在最前），为了画图（时间从左到右），我们需要反转一下列表
+        // 反转列表, 将数据库查数据库查询结果变为顺序
         Collections.reverse(dataList);
 
         // 2. 提取 X轴数据 (时间)

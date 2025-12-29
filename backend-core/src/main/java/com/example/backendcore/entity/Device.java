@@ -16,7 +16,7 @@ public class Device implements Serializable {
     private Long buildingId;
     private String roomNo;
 
-    // 强制 JSON 序列化为 "pMax" (保持驼峰)，解决前端读不到值的问题
+    // 强制 JSON 序列化为 "pMax"
     @JsonProperty("pMax")
     private BigDecimal pMax;
 

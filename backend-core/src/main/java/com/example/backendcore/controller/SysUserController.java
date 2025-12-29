@@ -13,7 +13,6 @@ import java.util.Map;
 
 /**
  * 用户接口控制器
- * 前端访问路径: http://localhost:8080/user/xxx
  */
 @RestController
 @RequestMapping("/user")

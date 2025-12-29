@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Random;
 
 /**
- * [PDF要求对应] 异常类型 B: 电压不稳
+ * 异常类型 B: 电压不稳
  * 电压突然跌至 180V 或升至 260V
  */
 @Component("voltageInstabilityStrategy")

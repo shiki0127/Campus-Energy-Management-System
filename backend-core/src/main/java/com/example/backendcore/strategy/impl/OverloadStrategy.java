@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * 过载异常策略 (PDF要求的异常类型A)
+ * 过载异常策略
  * 功率飙升至 1.2 倍
  */
 @Component("overloadStrategy")

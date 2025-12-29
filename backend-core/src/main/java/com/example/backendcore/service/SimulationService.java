@@ -1,3 +1,7 @@
+/*
+策略模式的上下文 (Context)，决定当前用哪个策略生成数据
+观察者模式的发布者 (Publisher)，生成数据后发布事件
+ */
 package com.example.backendcore.service;
 
 import com.example.backendcore.entity.Device;
@@ -31,7 +35,7 @@ public class SimulationService {
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-    // 自动注入所有策略 (Key是Bean的名字, 如 "normalStrategy")
+    // 自动注入所有策略
     @Autowired
     private Map<String, SimulationStrategy> strategyMap;
 
@@ -40,7 +44,7 @@ public class SimulationService {
     // 计数器：记录当前已经正常模拟了多少次
     private int currentCounter = 0;
 
-    // 下一次触发故障的目标次数 (正式环境初始化为正常范围)
+    // 下一次触发故障的目标次数
     private int nextAnomalyTarget = 20;
 
     // 每 5 秒执行一次模拟
@@ -69,7 +73,7 @@ public class SimulationService {
 
             System.out.println(">>> [模拟器] 本轮将触发故障！下一次故障将在 " + nextAnomalyTarget + " 次后触发");
 
-            // 随机选一个设备作为故障目标 (修复了总是第1个设备报错的问题)
+            // 随机选一个设备作为故障目标
             targetDeviceIndex = random.nextInt(devices.size());
         }
 

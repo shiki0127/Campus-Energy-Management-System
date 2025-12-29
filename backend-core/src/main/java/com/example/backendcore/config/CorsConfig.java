@@ -14,7 +14,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // 允许所有接口
-                .allowedOriginPatterns("*") // 允许所有来源 (SpringBoot 2.4+ 推荐写法)
+                .allowedOriginPatterns("*") // 允许所有来源
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 允许的方法
                 .allowedHeaders("*") // 允许所有请求头
                 .allowCredentials(true) // 允许发送 Cookie

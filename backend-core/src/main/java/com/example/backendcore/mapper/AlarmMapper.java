@@ -12,10 +12,10 @@ public interface AlarmMapper {
     @Insert("INSERT INTO alarm (device_id, type, value, detail, create_time) VALUES (#{deviceId}, #{type}, #{value}, #{detail}, NOW())")
     int insert(Alarm alarm);
 
-    // 查询列表（保持带 Limit，用于表格展示，防止一次加载几万条卡死）
+    // 查询列表
     List<Map<String, Object>> selectListWithDeviceInfo();
 
-    // 新增：统计总数（用于大屏 KPI，不带 Limit）
+    // 统计总数
     @Select("SELECT COUNT(*) FROM alarm")
     int countAll();
 }

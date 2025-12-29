@@ -13,7 +13,6 @@ public interface EnergyMapper {
     List<EnergyData> selectChartData(@Param("deviceId") Long deviceId);
     List<Map<String, Object>> selectEnergyRanking();
 
-    // 新增 KPI 接口
     BigDecimal selectTotalRealtimePower();
     BigDecimal selectTodayTotalEnergy();
 }

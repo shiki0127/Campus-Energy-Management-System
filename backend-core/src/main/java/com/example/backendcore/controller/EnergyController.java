@@ -55,7 +55,7 @@ public class EnergyController {
         if (todayEnergy == null) todayEnergy = BigDecimal.ZERO;
         kpi.put("todayEnergy", todayEnergy.setScale(1, BigDecimal.ROUND_HALF_UP));
 
-        // 3. 历史告警总数 (使用 countAll 获取真实总数，不受 Limit 200 限制)
+        // 3. 历史告警总数 (使用 countAll 获取真实总数)
         int alarmCount = alarmMapper.countAll();
         kpi.put("alarmCount", alarmCount);
 

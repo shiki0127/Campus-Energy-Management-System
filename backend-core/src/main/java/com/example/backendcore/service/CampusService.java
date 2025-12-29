@@ -10,6 +10,5 @@ public interface CampusService {
     List<Device> getDeviceList();
     List<Alarm> getAlarmList();
 
-    // 新增：添加设备（包含校验逻辑）
     void addDevice(Device device);
 }
