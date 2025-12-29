@@ -115,7 +115,7 @@ root
     5. 访问 http://localhost:8080/doc.html 查看接口文档。
 
 3. 前端启动
-4. 
+
 ```Bash
 
 cd smart-campus-ui
@@ -132,12 +132,20 @@ npm run dev
 ## 📸 功能截图
 1. 综合监控大屏
 
+展示实时总功率、在线设备数以及动态刷新的功率趋势图。
+<img width="2188" height="1288" alt="Image" src="https://github.com/user-attachments/assets/e1dda24a-95b5-415c-a83a-64d16e1a3736" />
 
 2. 实时能耗监测
 
+左侧设备树选择，右侧展示该设备的实时电压、电流、功率曲线。
+<img width="2190" height="1288" alt="Image" src="https://github.com/user-attachments/assets/f0466e4c-4a13-4d74-9ef5-f8e424a79e2e" />
 
 3. 告警记录
 
+自动捕获模拟器生成的“电压异常”与“功率过载”事件。
+<img width="2171" height="1308" alt="Image" src="https://github.com/user-attachments/assets/20959a82-46f8-45fe-a7ae-315a54e77b20" />
+
+---
 
 ## 📄 模拟器逻辑说明
 
@@ -159,6 +167,6 @@ npm run dev
 
   - 异常B (电压不稳): 电压突变为 180V 或 260V。
 
-##👤 作者
+## 👤 作者
 
 Created by shiki
