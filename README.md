@@ -4,7 +4,7 @@
 
 ![Vue 3](https://img.shields.io/badge/Vue-3.x-42b983?style=flat-square&logo=vue.js)
 ![Element Plus](https://img.shields.io/badge/Element-Plus-409eff?style=flat-square&logo=element)
-![Spring Boot](https://img.shields.io/badge/SpringBoot-2.6.x-6db33f?style=flat-square&logo=springboot)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-2.6.13-6db33f?style=flat-square&logo=springboot)
 ![MyBatis](https://img.shields.io/badge/MyBatis-Plus-000000?style=flat-square)
 ![MySQL](https://img.shields.io/badge/MySQL-5.7+-4479a1?style=flat-square&logo=mysql)
 
